@@ -12,15 +12,19 @@ export const gameLogic = (input) => {
     // Handle movement logic and voluntary exit from app based on user's input
     const userInput = input.toString().toLowerCase()
     switch (userInput) {
+      case 'u\n':
       case 'up\n':
         index1 -= 1
         break;
+      case 'r\n':
       case 'right\n':
         index2 += 1
         break;
+      case 'd\n':
       case 'down\n':
         index1 += 1
         break;
+      case 'l\n':
       case 'left\n':
         index2 -= 1
         break;
@@ -31,7 +35,7 @@ export const gameLogic = (input) => {
     
     // Stablish the conditions under which the game is over
     if (index1 < 0 || index2 < 0 || index1 > 9 || index2 > 9) {
-      process.stdout.write(`You left the field, Game Over!`);
+      process.stdout.write(`You left the field, Game Over!\n`);
       process.exit()
     } else if (myField.fieldArray[index1][index2] === 'O') {
       process.stdout.write(`You fell in a hole, Game Over!\n`);
