@@ -9,15 +9,22 @@ const hole = 'O'
 
 // Select a random field type out of unexplored and hole with a ratio of 3 to 1
 export const selectRandom = () => {
-    const random = Math.floor(Math.random() * 4) + 1
+    const random = Math.floor(Math.random() * 9) + 1
     switch (random) {
       case 1:
       case 2:
       case 3:
+      case 4:
+      case 5:
+      case 6:
+      case 7:
         return unexplored;
         break;
-      case 4:
+      case 8:
         return hole;
+        break;
+      case 9:
+        return cash;
         break;
     }
 }
@@ -28,7 +35,7 @@ export const greet = () => process.stdout.write(
     Below you can see the game field, in which there is unexplored field (░), holes where you can fall (O), and a hat (^)!\n
     You will start in the top-left corner and your character will be marked with an asterisk (*).\n
     You will need to walk until you find your hat, but be careful! if you leave the field or fall in a hole you will lose.\n
-    As you walk round, try to collect some cash by walking over the $ symbols - the MAXIMUM you can get is $5.  Good luck! \n\n`
+    As you walk round, try to collect some cash by walking over the $ symbols.  Good luck! \n\n`
 )
 // Print a message with instructions on how to play
 export const play = () => process.stdout.write(
@@ -50,9 +57,4 @@ export const populateMyField = () => {
     )
     myField.fieldArray[0][0] = player
     myField.fieldArray[randomIndex()][randomIndex()] = hat
-    myField.fieldArray[randomIndex()][randomIndex()] = cash
-    myField.fieldArray[randomIndex()][randomIndex()] = cash
-    myField.fieldArray[randomIndex()][randomIndex()] = cash
-    myField.fieldArray[randomIndex()][randomIndex()] = cash
-    myField.fieldArray[randomIndex()][randomIndex()] = cash
 }

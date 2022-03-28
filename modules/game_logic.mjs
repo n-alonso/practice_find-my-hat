@@ -52,7 +52,7 @@ export const gameLogic = (input) => {
     if (myField.fieldArray[index1][index2] === '$') {
       // The player has hit a cash symbol, increment their total and tell them about it
       total_cash = total_cash + 1
-      console.log(`You found some cash! You now have $` + total_cash);
+      process.stdout.write(`You found some cash! You now have $${total_cash}\n`);
     } 
 
     // Move the player to the location based on the results of the switch
