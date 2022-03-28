@@ -4,6 +4,7 @@ import { myField } from "../app.mjs"
 const unexplored = '░'
 const player = '*'
 const hat = '^'
+const cash = '$'
 const hole = 'O'
 
 // Select a random field type out of unexplored and hole with a ratio of 3 to 1
@@ -26,7 +27,8 @@ export const greet = () => process.stdout.write(
     `Hello player and welcome to Find My Hat!\n
     Below you can see the game field, in which there is unexplored field (░), holes where you can fall (O), and a hat (^)!\n
     You will start in the top-left corner and your character will be marked with an asterisk (*).\n
-    You will need to walk until you find your hat, but be careful! if you leave the field or fall in a hole you will lose.\n\n`
+    You will need to walk until you find your hat, but be careful! if you leave the field or fall in a hole you will lose.\n
+    As you walk round, try to collect some cash by walking over the $ symbols - the MAXIMUM you can get is $5.  Good luck! \n\n`
 )
 // Print a message with instructions on how to play
 export const play = () => process.stdout.write(
@@ -36,7 +38,8 @@ export const play = () => process.stdout.write(
 
 // Generate a random index from 0 to 9
 const randomIndex = () => Math.floor(Math.random() * 10)
-// Populate the play field with the random function, then add a one player and one hat
+
+// Populate the play field with the random function, then add a one player and one hat and five cash
 export const populateMyField = () => {
     myField.fieldArray.forEach(
       array => array.forEach(
@@ -47,4 +50,9 @@ export const populateMyField = () => {
     )
     myField.fieldArray[0][0] = player
     myField.fieldArray[randomIndex()][randomIndex()] = hat
+    myField.fieldArray[randomIndex()][randomIndex()] = cash
+    myField.fieldArray[randomIndex()][randomIndex()] = cash
+    myField.fieldArray[randomIndex()][randomIndex()] = cash
+    myField.fieldArray[randomIndex()][randomIndex()] = cash
+    myField.fieldArray[randomIndex()][randomIndex()] = cash
 }

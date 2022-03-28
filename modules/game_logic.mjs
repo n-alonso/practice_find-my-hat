@@ -5,6 +5,10 @@ import { myField } from '../app.mjs'
 let index1 = 0
 let index2 = 0
 
+// Keep a track of how much cash the player has in game starting with 0
+let total_cash = 0
+console.log(total_cash)
+
 export const gameLogic = (input) => {
     // When player moves, change the previous spot back to neutral field
     myField.fieldArray[index1][index2] = '░'
@@ -33,7 +37,7 @@ export const gameLogic = (input) => {
         break;
     }
     
-    // Stablish the conditions under which the game is over
+    // Establish the conditions under which the game is over
     if (index1 < 0 || index2 < 0 || index1 > 9 || index2 > 9) {
       process.stdout.write(`You left the field, Game Over!\n`);
       process.exit()
@@ -45,6 +49,12 @@ export const gameLogic = (input) => {
       process.exit()
     }
     
+    if (myField.fieldArray[index1][index2] === '$') {
+      // The player has hit a cash symbol, increment their total and tell them about it
+      total_cash = total_cash + 1
+      console.log(`You found some cash! You now have $` + total_cash);
+    } 
+
     // Move the player to the location based on the results of the switch
     myField.fieldArray[index1][index2] = '*'
     // Print the updated field to the terminal
